@@ -1,5 +1,7 @@
 ## Grudges Application
 
+![readmeDemo](./src/assets/Grudges.png)
+
 This application was created for the [Rapid Development on AWS: React, Node.js & GraphQL Course](https://frontendmasters.com/courses/aws-react-node-graphql/) for Frontend Masters.
 
 ## Code
