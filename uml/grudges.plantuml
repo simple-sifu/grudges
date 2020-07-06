@@ -1,0 +1,20 @@
+@startuml devtools
+actor user
+control onLoad
+boundary Application
+entity grudges
+
+onLoad -> Application : render
+Application -> Application : <newGrudge onSubmit={this.addGrudge}/> 
+user -> Application : type characters
+Application -> NewGrudge : type characters
+NewGrudge -> NewGrudge : onChange={this.handleChange}
+NewGrudge -> NewGrudge : handleChange = event => { \nconst { target } = event \n const {value, name} = target \n this.setState({[name]: value}) \n}
+user -> Application : press submit button
+Application -> NewGrudge : press submit button
+NewGrudge -> NewGrudge: onSubmit={this.handleSubmit}
+NewGrudge -> NewGrudge: handleSubmit = event => { \nconst { onSubmit } = this.props; \n const { person, deed } = this.state \n onSubmit({Avenged: false, deed, id: Date.now().toString, person})\n this.setState)({person: "", deed: ""}) \n}
+Application <- NewGrudge: addGrudge({\n     Avenged: false, \n     deed, \n     id: Date.now().toString(), \n     person\n})
+Application -> Application: addGrudge = grudge => { \nthis.setState({\n grudges: [grudge, ...this.state.grudges] \n}) \n}
+Application -> Application: render
+@enduml
